@@ -13,7 +13,7 @@ function displayEmployeeShifts(employee) {
         console.log(`Day: ${shift.day}, Hours Worked: ${shift.hours}`);
     });}
 
-// Example usage:
+// Example:
 employees.forEach(displayEmployeeShifts);
 
 // Task 3: Create a Function to Assign a New Shift
@@ -33,5 +33,22 @@ function assignShift(employeeName, day, hours) {
         console.log(`Shift assigned: ${employeeName} now works ${hours} hours on ${day}.`);
     }}
 
-// Example usage:
+// Example:
 assignShift('David', 'Thursday', 5); // Should assign the shift
+
+// Task 4: Create a Function to Calculate Total Hours Worked
+function calculateTotalHours(employeeName) {
+    const employee = employees.find(emp => emp.name === employeeName);
+    
+    if (!employee) {
+        console.log(`Error: Employee ${employeeName} not found.`);
+        return;}
+
+    const totalHours = employee.shifts.reduce((sum, shift) => sum + shift.hours, 0);
+    
+    console.log(`${employeeName} has worked a total of ${totalHours} hours this week.`);
+    return totalHours;}
+
+// Example:
+calculateTotalHours('John'); // Should log the total hours worked by John
+
